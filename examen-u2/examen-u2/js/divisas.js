@@ -16,12 +16,12 @@ convercion();
     function convercion(){
         if (Dolar){
             if(Euro2){
-            resultado = (cantidad * 0.92)
+            resultado = (cantidad.value * 0.92)
             alert (resultado)
                       }
             else if (Libra2)
             {
-                resultado = (cantidad * 0.92);
+                resultado = (cantidad.value * 0.92);
                 alert(resultado);
             }
             else {
@@ -30,11 +30,11 @@ convercion();
         }
         else if(Euro){
             if(Dolar2){
-                resultado = (cantidad * 1.08)
+                resultado = (cantidad.value * 1.08)
                 alert (resultado);
             }
             else if (Libra2){
-                resultado = (cantidad * 0.86)
+                resultado = (cantidad.value * 0.86)
                 alert (resultado);
             }
             else {

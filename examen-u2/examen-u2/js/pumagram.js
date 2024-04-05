@@ -1,9 +1,11 @@
- const comentario = document.querySelectorAll('.add-comment .comment-input');
+
  let publicaciones = [];
+ const nombreUsuario = ["Usuario123"];
  function AgregarPublicacion(){
         const Nuevapublicaion = prompt("Ingrese su Publicacion");
         if(Nuevapublicaion != null && Nuevapublicaion.trim() != ''){
-        publicaciones.push(Nuevapublicaion);
+        const publicacionNombre = `${nombreUsuario}: ${Nuevapublicaion}`
+         publicaciones.push(publicacionNombre);
         mostrarPublicacion();
         GuardarPublicacionenLocalStorage();
         }
@@ -13,15 +15,21 @@
  }
   const ContenedorPublicacion = document.getElementById('ContenedorPublicaciones');
  function mostrarPublicacion(){
-    ContenedorPublicacion.innerHtml = "";
+    ContenedorPublicacion.innerHTML = "";
     publicaciones.forEach((publicacion)=>{
-    const ElementoPublicacion = document.querySelector("div");
+    const ElementoPublicacion = document.createElement("div");
     ElementoPublicacion.classList.add("publicacion");
+
+  
 
     const textoPublicacion = document.createElement("span");
     textoPublicacion.textContent = publicacion;
-    textoPublicacion.textContent ="publicacion";})
- }
+    ElementoPublicacion.appendChild(textoPublicacion);
+    ContenedorPublicacion.appendChild(ElementoPublicacion);
+ });
+    }
+    
+    
 
  function GuardarPublicacionenLocalStorage (){
     const ElementoPublicacionJSON = JSON.stringify(publicaciones);
@@ -36,10 +44,18 @@ function CargarPublicacionesNotas(){
 }
    window.addEventListener("load",CargarPublicacionesNotas);
 
-const contenedor =document.querySelector('."like-count"')
+const contenedor =document.querySelector('.like-count')
     const megusta = document.querySelector('.like-btn');
     megusta.addEventListener("click",() => {
-        contenedor + 1;
+        let likes = parseInt(contenedor.textContent);
+        likes++;
+        contenedor.textContent = likes;
     })
-
+   
+const Nomegusta = document.querySelector('.dontlike-btn');
+Nomegusta.addEventListener("click",()=>{
+   let likes = parseInt(contenedor.textContent);
+   likes --;
+   contenedor.textContent = likes;
+}) 
 
